@@ -57,7 +57,7 @@ public class RestdocsApplicationTests {
     @Test
     public void booksListExample() throws Exception {
 
-        this.mockMvc.perform(get("/books"))
+        this.mockMvc.perform(get("/api/books").contextPath("/api"))
                 .andExpect(status().isOk())
                 .andDo(document("books-list-example",
                         links(
@@ -72,7 +72,7 @@ public class RestdocsApplicationTests {
         book.put("description", "http://martinfowler.com/articles/richardsonMaturityModel.html");
 
         this.mockMvc.perform(
-                post("/books").contentType(MediaTypes.HAL_JSON).content(
+                post("/api/books").contextPath("/api").contentType(MediaTypes.HAL_JSON).content(
                         this.objectMapper.writeValueAsString(book))).andExpect(
                 status().isCreated())
                 .andDo(document("books-create-example",
@@ -83,7 +83,8 @@ public class RestdocsApplicationTests {
 
     @Test
     public void bookGetExample() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/books/{id}", 1)
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/books/{id}", 1)
+                .contextPath("/api")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print())
