@@ -1,0 +1,42 @@
+= RESTful Books API Guide
+Andy Wilkinson;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 4
+:sectlinks:
+:operation-curl-request-title: Example request
+:operation-http-response-title: Example response
+
+[[resources-books]]
+== Books
+
+The Books resources is used to create and list books
+
+
+
+[[resources-books-list]]
+=== Listing books
+
+A `GET` request will list all of the service's books.
+
+operation::books-list-example[snippets='response-fields,curl-request,http-response,links']
+
+
+
+[[resources-books-create]]
+=== Creating a book
+
+A `POST` request is used to create a book.
+
+operation::books-create-example[snippets='request-fields,curl-request,http-response']
+
+
+
+[[resources-books-retrieve]]
+=== Retrieve a book
+
+A `GET` request will retrieve the details of a book
+
+operation::book-get-example[snippets='response-fields,curl-request,http-response']
